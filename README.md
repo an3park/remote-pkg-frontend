@@ -7,7 +7,7 @@ Frontend for [ps4 remote pkg installer](https://github.com/flatz/ps4_remote_pkg_
 - Windows, Linux
 
 ### Download
-[Releases](./releases)
+[Releases](../../releases)
 
 ### Screenshot
 ![screen](./docs/win.png)
