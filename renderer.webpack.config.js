@@ -2,6 +2,7 @@ const path = require('path')
 const { DefinePlugin } = require('webpack')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
+const { title } = require('./package.json')
 
 const isDev = process.env.NODE_ENV === 'development'
 const isProd = !isDev
@@ -22,7 +23,7 @@ module.exports = {
     overlay: true
   },
   plugins: [
-    new HTMLWebpackPlugin(),
+    new HTMLWebpackPlugin({ title }),
     new VueLoaderPlugin(),
     new DefinePlugin({
       __VUE_OPTIONS_API__: 'true',

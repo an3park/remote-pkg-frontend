@@ -6,8 +6,8 @@
     <h2 v-if="currentDevice" style="flex-grow: 1">
       NAME: {{ currentDevice.name }} | IP: {{ currentDevice.psip }}
     </h2>
-    <h2 v-else>NOT FOUND</h2>
-    <span class="circle" :green="connected"></span>
+    <h2 v-else style="flex-grow: 1">NOT FOUND</h2>
+    <span class="circle" :class="{'circle-green': connected}"></span>
   </div>
 
   <button class="add-button" @click="add">ADD FILE</button>
@@ -39,7 +39,7 @@ export default {
     devices: [],
     devicePos: 0,
     files: [],
-    connected: null
+    connected: false
   }),
   computed: {
     currentDevice() {
@@ -162,7 +162,7 @@ body {
 .play-icon {
   font-size: 1.5rem;
 }
-.circle[green] {
+.circle-green {
   background: yellowgreen;
   box-shadow: 0 0 10px 4px yellowgreen;
 }

@@ -1,6 +1,7 @@
 {
-  "name": "ps-installer",
-  "version": "1.0.0",
+  "name": "remote-pkg-frontend",
+  "title": "Remote PKG frontend",
+  "version": "1.0.1",
   "description": "Electron ps4",
   "main": "./build/main/main.js",
   "private": true,

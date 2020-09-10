@@ -126,18 +126,18 @@ function createWindow() {
   ipcMain.on('discover', () => {
     if (__DEV__) {
       // add fake devices
-      // setTimeout(() => {
-      //   mainWindow.webContents.send('device', {
-      //     psip: '192.168.1.88',
-      //     myip: '192.168.132',
-      //     name: 'PS8-FAKE'
-      //   })
-      //   mainWindow.webContents.send('device', {
-      //     psip: '10.10.10.123',
-      //     myip: '10.10.10.6',
-      //     name: 'PS3-FAKE'
-      //   })
-      // }, 1000)
+      setTimeout(() => {
+        mainWindow.webContents.send('device', {
+          psip: '192.168.1.88',
+          myip: '192.168.132',
+          name: 'PS8-FAKE'
+        })
+        mainWindow.webContents.send('device', {
+          psip: '10.10.10.123',
+          myip: '10.10.10.6',
+          name: 'PS3-FAKE'
+        })
+      }, 1000)
     }
     searchps.search()
   })
