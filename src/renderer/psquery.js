@@ -55,7 +55,8 @@ export async function get_progress(device, task_id) {
     )
     const len = parseInt(match[1])
     const tfd = parseInt(match[2])
-    return (tfd / len).toFixed(2) || 0.01
+    const div = tfd / len
+    return Number.isFinite(div) ? div.toFixed(2) : '0'
   } else {
     throw new Error('code ' + matchErr(text))
   }

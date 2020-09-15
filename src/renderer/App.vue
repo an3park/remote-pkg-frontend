@@ -75,7 +75,7 @@ export default {
         }
       }
       this.$nextTick(() =>
-        is_exists(this.currentDevice, 'c')
+        is_exists(this.currentDevice, 'CUSA09311')
           .then(() => change(true))
           .catch(() => change(false))
       )
