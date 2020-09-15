@@ -24,12 +24,12 @@ server.get('/:hash', async (req, res) => {
 global.PORT = 44321
 const stopTrying = PORT + 5
 const startServer = () => {
-  try {
-    server.listen(++PORT, () => console.log('[OK] server on port ' + PORT))
-  } catch (err) {
-    if (PORT > stopTrying) throw err
-    startServer()
-  }
+  server
+    .listen(++PORT, () => console.log('[OK] server on port ' + PORT))
+    .once('error', err => {
+      if (PORT > stopTrying) throw err
+      startServer()
+    })
 }
 startServer()
 
