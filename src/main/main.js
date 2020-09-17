@@ -1,19 +1,28 @@
 // Modules to control application life and create native browser window
 import { app, BrowserWindow, Menu, dialog, ipcMain } from 'electron'
 import path from 'path'
-import { promises as fs, constants } from 'fs'
+import { promises as fs, constants, lstat } from 'fs'
 import { MDNSsearch } from './MDNSsearch'
 import express from 'express'
 
 Menu.setApplicationMenu(null)
 
+Object.defineProperty(Array.prototype, 'last', {
+  get: function () {
+    return this[this.length - 1]
+  },
+  enumerable: false,
+  configurable: false
+})
+
 const searchps = new MDNSsearch()
+const FILES = []
 
 const server = express()
 server.get('/:hash', async (req, res) => {
   try {
     const hash = req.params.hash
-    const file = Buffer.from(hash, 'hex').toString('utf-8')
+    const file = FILES.filter(f => f.hash === hash).last.path
     await fs.access(file, constants.R_OK)
     res.sendFile(file)
   } catch (error) {
@@ -55,8 +64,9 @@ ipcMain.on('add-files', async (event, arg) => {
         path,
         ...meta,
         filesize: size,
-        hash: Buffer.from(path, 'utf-8').toString('hex')
+        hash: Date.now().toString().slice(-7)
       }
+      FILES.push(newfile)
       event.reply('new-file', newfile)
     }
   } catch (err) {

@@ -20,7 +20,7 @@
       &nbsp;
       <span v-if="f.is_exists">&#10003;</span>
     </div>
-    <div v-if="f.progress">{{ f.progress * 100 }}%</div>
+    <div v-if="typeof f.progress === 'number'">{{ f.progress }}%</div>
     <div v-else class="play-icon pointer" @click="install(f)">&#9654;</div>
   </div>
 </template>
