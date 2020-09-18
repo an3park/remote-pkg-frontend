@@ -89,7 +89,7 @@ export default {
         file.task_id = task_id
         const update = async () => {
           file.progress = await get_progress(this.currentDevice, task_id)
-          file.progress < 1 && setTimeout(update, 10000)
+          file.progress < 100 && setTimeout(update, 10000)
         }
         update()
       } catch (err) {
