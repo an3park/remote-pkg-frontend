@@ -1,7 +1,7 @@
 {
   "name": "remote-pkg-frontend",
   "title": "Remote PKG frontend",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Electron ps4",
   "main": "./build/main/main.js",
   "private": true,
